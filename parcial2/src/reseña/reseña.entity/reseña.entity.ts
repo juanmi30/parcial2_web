@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 //1
+//2
 import { ActividadEntity } from "src/actividad/actividad.entity/actividad.entity";
 import { EstudianteEntity } from "src/estudiante/estudiante.entity/estudiante.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
