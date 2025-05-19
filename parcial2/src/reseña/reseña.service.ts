@@ -8,10 +8,10 @@ import { Repository } from 'typeorm';
 export class ReseñaService {
     constructor(
         @InjectRepository(ReseñaEntity)
-        private reseñaRepo: Repository<ReseñaEntity>,
+        private readonly reseñaRepo: Repository<ReseñaEntity>,
     ) { }
 
-    async agregarReseña(reseña: Partial<ReseñaEntity>) {
-        return this.reseñaRepo.save(reseña);
+    async agregarReseña(reseña: ReseñaEntity): Promise<ReseñaEntity> {
+        return await this.reseñaRepo.save(reseña);
     }
 }

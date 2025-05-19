@@ -1,13 +1,11 @@
 /* eslint-disable prettier/prettier */
-//1
-//2
-import { ActividadEntity } from "src/actividad/actividad.entity/actividad.entity";
-import { EstudianteEntity } from "src/estudiante/estudiante.entity/estudiante.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ActividadEntity } from "../../actividad/actividad.entity/actividad.entity";
+import { EstudianteEntity } from "../../estudiante/estudiante.entity/estudiante.entity";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ReseñaEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id: number;
 
     @Column()
@@ -19,10 +17,12 @@ export class ReseñaEntity {
     @Column()
     fecha: string;
 
-    @ManyToOne(() => EstudianteEntity, (estudiante) => estudiante.reseñas)
-    estudiante: EstudianteEntity;
+    @ManyToOne(() => EstudianteEntity, (estudiante) => estudiante.reseñas, {nullable: true})
+    @JoinColumn()
+    estudiante?: EstudianteEntity;
 
-    @ManyToOne(() => ActividadEntity, (actividad) => actividad.reseñas)
-    actividad: ActividadEntity;
+    @ManyToOne(() => ActividadEntity, (actividad) => actividad.reseñas, {nullable: true})
+    @JoinColumn()
+    actividad?: ActividadEntity;
 
 }

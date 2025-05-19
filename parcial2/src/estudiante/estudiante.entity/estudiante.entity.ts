@@ -30,9 +30,9 @@ export class EstudianteEntity {
     @Column()
     semestre: number;
 
-    @OneToMany(() => ReseñaEntity, (reseña) => reseña.estudiante)
+    @OneToMany(() => ReseñaEntity, (reseña) => reseña.estudiante, {nullable: true})
     reseñas: ReseñaEntity[];
 
-    @ManyToMany(() => ActividadEntity, (actividad) => actividad.estudiantes)
+    @ManyToMany(() => ActividadEntity, (actividad) => actividad.estudiantes, {nullable: true})
     actividades: ActividadEntity[];
 }
